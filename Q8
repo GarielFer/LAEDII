@@ -4,10 +4,10 @@
 void editar(int idA);
 
 int main(){
-int r;
-    printf("Informe o id do contato que deseja remover: ");
-    scanf("%i",&r);
-    editar(r);
+int a;
+    printf("Informe o id do contato que deseja editar: ");
+    scanf("%i",&a);
+    editar(a);
 }
 
 void editar(int idA){
