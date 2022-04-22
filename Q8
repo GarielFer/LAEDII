@@ -30,7 +30,7 @@ void editar(int idA){
             fprintf(f1,"%d %s %s %s\n",id, nome, profissao,telefone);
             }else if(id == idA){
             printf("Insira um novo nome para esse id: ");
-            scanf("%s",&nome);
+            scanf("%s",nome);
             fprintf(f1,"%d %s %s %s\n",id, nome, profissao,telefone);    
             }       
     }
