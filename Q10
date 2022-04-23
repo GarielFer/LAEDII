@@ -1,0 +1,32 @@
+//Exportar um contato
+#include<stdio.h>
+
+void exportar(int IDA);
+
+int main(){
+int e;
+    printf("Informe o ID do contato que deseja exportar: ");
+    scanf("%i",&e);
+    exportar(e);
+}
+
+void exportar(int IDA){
+    FILE *f1 = fopen("agenda.dat", "r");
+    
+    int id;
+    char nome[80];
+    char profissao[80];
+    char telefone[80];
+    
+    if(!f1){
+        printf("Impossivel abrir esse arquivo");
+    }
+
+    while(!feof(f1)){
+        fscanf(f1,"%d %s %s %s",&id,nome,profissao,telefone);
+        if(id == IDA){
+        FILE *f2 = fopen(".dat", "w"); // a implementação do nome do arquivo seria aqui
+        fprintf(f2,"%d %s %s %s", id, nome, profissao, telefone);
+        }
+    }
+}
