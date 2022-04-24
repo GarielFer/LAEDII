@@ -1,5 +1,6 @@
 //Exportar um contato
 #include<stdio.h>
+#include<string.h>
 
 void exportar(int IDA);
 
@@ -25,7 +26,7 @@ void exportar(int IDA){
     while(!feof(f1)){
         fscanf(f1,"%d %s %s %s",&id,nome,profissao,telefone);
         if(id == IDA){
-        FILE *f2 = fopen(".dat", "w"); // a implementação do nome do arquivo seria aqui
+        FILE *f2 = fopen(strcat(nome,".dat"), "w"); // a implementação do nome do arquivo seria aqui
         fprintf(f2,"%d %s %s %s", id, nome, profissao, telefone);
         }
     }
