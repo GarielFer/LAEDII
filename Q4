@@ -1,0 +1,30 @@
+//Acessar um contato através de um indice
+#include<stdio.h>
+
+void acessar(int ID);
+
+int main(){
+int a;    
+    printf("Informe o ID do contato que deseja acessar: ");
+    scanf("%i",&a);
+    acessar(a);
+}
+
+void acessar(int ID){
+    int id;
+    char nome[80];
+    char profissao[80];
+    char telefone[80];
+
+    FILE *file = fopen("agenda.dat", "r");
+    if(!file){
+        printf("Impossivel abrir o arquivo\n");
+    }
+    while (!feof(file)){
+        fscanf(file, "%d %s %s %s",&id, nome, profissao, telefone);
+        if(id == ID){
+            printf("\nO contato acessado foi\n");
+            printf("(%d) (%s) (%s) (%s)\n\n",id, nome, profissao, telefone);
+        }
+    }
+}
