@@ -1,0 +1,38 @@
+//Editar numero de telefone a partir de um indentificador (ID)
+#include<stdio.h>
+
+void editarTelefone (int IDA);
+int main(){
+int t;
+
+    printf("Insira o id do contato que deseja alterar o número de telefone: ");
+    scanf("%i",&t);
+    editarTelefone(t);
+}
+
+void editarTelefone(int IDA){
+    FILE *f1 = fopen("agenda_aux.dat", "w");
+    FILE *f2 = fopen("agenda.dat", "r");
+
+    int id;
+    char nome[80];
+    char profissao[80];
+    char telefone[80];
+
+    if(!f2){
+        printf("Impossivel abrir esse arquivo\n");
+    }
+
+    while (!feof(f2)){
+        fscanf(f2,"%d %s %s %s", &id, nome, profissao, telefone);
+        if(id != IDA){
+            fprintf(f1,"\n%d %s %s %s", id, nome, profissao, telefone);
+            printf("\n%d %s %s %s", id, nome, profissao, telefone);
+        }else if(id == IDA){
+            printf("\n%d %s %s %s", id, nome, profissao, telefone);
+            printf("\n\nInforme um novo número de telefone para esse contato: ");
+            scanf("%s",telefone);
+            fprintf(f1,"\n%d %s %s %s", id, nome, profissao, telefone);
+        }
+    }  
+}
