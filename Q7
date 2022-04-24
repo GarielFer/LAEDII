@@ -1,0 +1,28 @@
+//Apagar todos os contatos
+#include<stdio.h>
+
+void apagarcontatos();
+
+int main(){
+    printf("Apagar todos os contatos da agenda\n\n");
+    apagarcontatos();    
+}
+
+void apagarcontatos(){
+
+    FILE *f1 = fopen("agenda_aux.dat", "w");
+    FILE *f2 = fopen("agenda.dat", "r");
+
+    int id;
+    char nome[80];
+    char profissao[80];
+    char telefone[80];
+
+    if(!f2){
+        printf("Impossivel abrir esse arquivo\n");
+    }
+    while (!feof(f2)){
+        fscanf(f2,"%d %s %s %s", &id, nome, profissao, telefone);
+        fprintf(f1,"(%d) Contato apagado\n",id);
+    }
+}
