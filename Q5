@@ -1,17 +1,16 @@
 //Listar contatos em função da profissão
 #include<stdio.h>
-
-void listarContatosPorProfissao(char *p);
+#include<string.h>
+void listarContatosPorProfissao(char p[]);
 
 int main(){
-char t [80];
-char *ponteiro = &t[80];
+char prof[80];
     printf("Informe uma profissão e listarei os contatos que trabalham nessa área: ");
-    scanf("%s",&t[80]);
-        listarContatosPorProfissao(ponteiro);    
+    scanf("%s",prof);
+        listarContatosPorProfissao(prof);    
 }
 
-void listarContatosPorProfissao(char *p){
+void listarContatosPorProfissao(char p[]){
     int id;
     char nome[80];
     char profissao[80];
@@ -29,8 +28,11 @@ void listarContatosPorProfissao(char *p){
 
     while (!feof(f1)){
         fscanf(f1,"%d %s %s %s", &id, nome, profissao, telefone);
-        if(profissao[0] == *p){
+        int result = strcmp(profissao,p);
+        if (result == 0){
         fprintf(f2,"%d %s %s %s\n", id, nome, profissao, telefone);
         }
     }
+    fclose (f1);
+    fclose (f2);
 }
